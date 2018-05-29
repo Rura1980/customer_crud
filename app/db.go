@@ -11,8 +11,8 @@ var appDb *DB
 const (
 	HOST     = "localhost"
 	PORT     = "5432"
-	USER     = "postgres"
-	PASSWORD = "muehxsgj"
+	USER     = "customer_db_user"
+	PASSWORD = "12345678"
 	DB_NAME  = "customer_db"
 )
 

@@ -2,7 +2,7 @@ package main
 
 import (
     "fmt"
-	"app"
+	"customer_crud/app"
 	"os"
 )
 
@@ -66,23 +66,44 @@ func main() {
 		chk(err)
 		showone(customer)	
 	  case "del":
-		if len(os.Args) != 2 {
+		if len(os.Args) != 3 {
 			fatal(help)
 		}
-		err := app.CustomerDelete()
+		err := app.CustomerRemove( os.Args[2] )
 		chk(err)
 	  case "edit":
-		if len(os.Args) != 5 {
+		if len(os.Args) != 8 && len(os.Args) != 9 {
 			fatal(help)
 		}
-		err := app.CustomerEdit()
+		
+		var err error = nil
+		id := os.Args[2]
+		firstname := os.Args[3]
+		lastname := os.Args[4]
+		birthdate := os.Args[5]
+		gender := os.Args[6]
+		email := os.Args[7]
+		var address string = ""
+		if len(os.Args) == 9 {
+		    address = os.Args[8]
+		}
+		
+		customer, err := app.CustomerEdit( id, firstname, lastname, birthdate, gender, email, address )
 		chk(err)
+		showone(customer)
 	  case "show":
-		if len(os.Args) > 3 {
+		if len(os.Args) != 2 {
 			fatal(help)
 		}
 		customers, err := app.CustomerList()
 		chk(err)
+		show(customers)
+	  case "search":
+        if len(os.Args) != 4 {
+			fatal(help)
+		}
+        customers, err := app.CustomerSearch( os.Args[2], os.Args[3] )
+		chk(err)	
 		show(customers)
 	  case "help":
 		fmt.Println(help)
