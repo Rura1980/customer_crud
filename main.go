@@ -10,9 +10,9 @@ const help = `Usage: main COMMAND [ARGS]...
 Commands:
 	add FIRSTNAME LASTNAME BIRTHDATE<dd.mm.yyyy> GENDER<M/N> EMAIL ADDRESS - create new customer;
 	del ID		   - delete customer;
-	edit ID FIRSTNAME LASTNAME BIRTHDATE<dd.mm.yyyy> GENDER<M/N> EMAIL ADDRESS       - edit customer;
+	edit ID FIRSTNAME LASTNAME BIRTHDATE<dd.mm.yyyy> GENDER<M/N> EMAIL ADDRESS       - edit customer. Use '-' to preserve old value;
 	show           - display all customers;
-	search FIRSTNAME LASTNAME    - display records found by firstname or lastname;
+	search FIRSTNAME LASTNAME    - display records found by firstname and lastname. Use '-' to ignore one or both values. For a example "search - Putin" will search all customers with lastname Putin;
 	help           - display this help.`
 
 	
